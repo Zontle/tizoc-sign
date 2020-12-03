@@ -1,5 +1,5 @@
-import { Link as ChakraLink, Button } from '@chakra-ui/react'
-
+import { Button } from '@chakra-ui/react'
+import { NextChakraLink } from './NextChakraLink'
 import { Container } from './Container'
 
 export const CTA = () => (
@@ -11,15 +11,16 @@ export const CTA = () => (
     maxWidth="48rem"
     py={2}
   >
-    <ChakraLink
-      isExternal
-      href="https://github.com/vercel/next.js/blob/canary/examples/with-chakra-ui-typescript"
+    <NextChakraLink
       flexGrow={3}
       mx={2}
+      my={2}
+      href="/walkthrough"
+      as={`/walkthrough`}
     >
       <Button width="100%" variant="solid" colorScheme="green">
-        View Demo
+        View Walkthrough
       </Button>
-    </ChakraLink>
+    </NextChakraLink>
   </Container>
 )

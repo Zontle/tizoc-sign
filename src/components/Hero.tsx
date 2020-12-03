@@ -1,7 +1,7 @@
 import { Flex, Heading } from '@chakra-ui/react'
 
 export const Hero = ({ title }: { title: string }) => (
-  <Flex justifyContent="center" alignItems="center" height="100vh" marginBottom="60px">
+  <Flex justifyContent="center" alignItems="center" my={5}>
     <Heading fontSize="6vw">{title}</Heading>
   </Flex>
 )
