@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react'
 import { NextChakraLink } from './NextChakraLink'
 
-export const Back = () => {
+export const Home = () => {
   return (
     <NextChakraLink
       flexGrow={3}
@@ -18,7 +18,7 @@ export const Back = () => {
         left="1rem"
         color="green"
       >
-        Go Back
+        Go Home
       </Button>
     </NextChakraLink>
   )

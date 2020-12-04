@@ -9,17 +9,17 @@ import {
 import { CheckCircleIcon } from '@chakra-ui/icons'
 
 import { Hero } from '../components/Hero'
-import { Container } from '../components/Container'
-import { Main } from '../components/Main'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
+import { Container } from '../components/layout/Container'
+import { Main } from '../components/layout/Main'
+import { DarkModeSwitch } from '../components/common/DarkModeSwitch'
 import { CTA } from '../components/CTA'
-import { Footer } from '../components/Footer'
+import { Footer } from '../components/layout/Footer'
 
 
 const Index = () => (
   <Container minHeight="100vh">
     <Main>
-      <Hero title="Tizoc" />  
+      <Hero title="Tizoc" />
       <Text>
         Tizoc is a turnkey solution for <Code>data attestation</Code>{' '}
         that uses <Code>custodial blockchain wallets</Code> for attestation payment services, with
@@ -30,11 +30,11 @@ const Index = () => (
       <List spacing={3} my={0}>
         <ListItem>
           <ListIcon as={CheckCircleIcon} color="green.500" />
-          In-house user management via the <ChakraLink textDecoration="underline" isExternal href="https://gruposantander.github.io/digital-trust-docs/" flexGrow={1}>Digital Trust Protocol</ChakraLink>, a consumer privacy-first OpenID (OIDC) identity service.
+          User management with data verification via the <ChakraLink textDecoration="underline" isExternal href="https://gruposantander.github.io/digital-trust-docs/" flexGrow={1}>Digital Trust Protocol</ChakraLink>, a consumer privacy-first OpenID (OIDC) identity service.
         </ListItem>
         <ListItem>
           <ListIcon as={CheckCircleIcon} color="green.500" />
-          Custodial accounts are created as <ChakraLink textDecoration="underline" isExternal href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" flexGrow={1}>secp256k1-ECDSA</ChakraLink> based Ethereum wallets using <ChakraLink textDecoration="underline" isExternal href="https://docs.tangany.com/" flexGrow={1}>Tangany</ChakraLink>, a regulated custodial provider.
+          Custodial accounts are created as <ChakraLink textDecoration="underline" isExternal href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" flexGrow={1}>secp256k1-ECDSA</ChakraLink> based Ethereum wallets using HSM-based keys via a regulated cloud provider.
         </ListItem>
         <ListItem>
           <ListIcon as={CheckCircleIcon} color="green.500" />
@@ -42,7 +42,7 @@ const Index = () => (
         </ListItem>
         <ListItem>
           <ListIcon as={CheckCircleIcon} color="green.500" />
-          Attestations proofs are discoverable via the <ChakraLink textDecoration="underline" isExternal href="https://ethereum.org/en/" flexGrow={1}>Ethereum Blockchain</ChakraLink> and searcheable and downloadeable. 
+          Attestations proofs are discoverable via the <ChakraLink textDecoration="underline" isExternal href="https://ethereum.org/en/" flexGrow={1}>Ethereum Blockchain</ChakraLink>, searcheable and downloadeable.
         </ListItem>
       </List>
     </Main>

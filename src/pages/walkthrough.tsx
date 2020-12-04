@@ -1,42 +1,42 @@
-import { Heading, Text, SimpleGrid, Box, Divider, Code } from "@chakra-ui/react"
-import { Container } from '../components/Container'
-import { Main } from '../components/Main'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
-import { Back } from '../components/Back'
-import { AirbnbExample } from "../components/Persona"
+import { Heading, Text, Divider, Badge, Link as ChakraLink } from "@chakra-ui/react"
+import { Container } from '../components/layout/Container'
+import { Main } from '../components/layout/Main'
+import { DarkModeSwitch } from '../components/common/DarkModeSwitch'
+import { Home } from '../components/common/Home'
+import * as Walkthrough from "../components/Walkthrough"
+import { Footer } from "../components/layout/Footer"
 
 
-const Walkthrough = () => (
+const WalkthroughPage = () => (
   <Container minHeight="100vh">
     <Main>
-      <Heading as="h1" size="2xl" isTruncated>
+      <Heading as="h1" size="2xl">
         Tizoc Walkthrough
+        <Badge ml="1" fontSize="0.3em" mx="2" borderRadius="10px" p="2" colorScheme="green">
+          Interactive
+        </Badge>
       </Heading>
-      <Text fontSize="2xl">Learn how Tizoc provides any enterprise with custodial attestation.</Text>
-      <Divider/>
-      <SimpleGrid columns={1} spacing={10}>
-        <Heading as="h2" size="lg">
-          Step 1. Users register to your system via an OICD provider.
-        </Heading>
-        <Text>
-          Depending on your authentication system, you likely will need to go 
-          through an OpenID or other Oauth2 schema where you log in your user 
-          and retrieve their identity from some <Code>getUser()</Code> method.
-          Upon obtaining your user's data on the client-side of your application,
-          format it so you append a unique ID.
-        </Text>
+      <Text fontSize="2xl">
+        Learn the features Tizoc provides to any enterprise with custodial attestation requirements.
+        <Text fontSize="xl" color="gray.600">Click on the middle sections of each step to see the descripted steps for the walkthrough.</Text>
+      </Text>
+      
 
-      </SimpleGrid>
-      <SimpleGrid columns={2} spacing={10}>
-        <Box>
-          <AirbnbExample/>
-        </Box>
-        <Box bg="tomato" height="80px"></Box>
-      </SimpleGrid>
+      <Divider mb="10" />
+
+      <Walkthrough.Section1 />
+      <Walkthrough.Section2 />
+      <Walkthrough.Section3 />
+      <Walkthrough.Section4 />
+      <Walkthrough.Section5 />
+
     </Main>
     <DarkModeSwitch />
-    <Back />
+    <Footer>
+      <Text>By <ChakraLink textDecoration="underline" isExternal href="https://zontle.tech/" flexGrow={1}>Zontle</ChakraLink>, a submission to the <ChakraLink textDecoration="underline" isExternal href="https://santander.devpost.com/" flexGrow={1}>2020 Santander Hackathon</ChakraLink></Text>
+    </Footer>
+    <Home />
   </Container>
 )
 
-export default Walkthrough
+export default WalkthroughPage
