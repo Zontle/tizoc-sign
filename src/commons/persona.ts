@@ -1,11 +1,11 @@
 export interface IPersona {
-  username: string
+  tag: string
   firstName: string
   lastName: string
   avatarSrc?: string
+  proof?: string
+  proofMetadata?: string
   email?: string
-  address?: string
-  phone?: string
 }
 export enum PersonaRole {
   registered = 'Registered',

@@ -22,7 +22,7 @@ export const Persona = ({ persona, role, mb = 0 }: { persona: IPersona, role: Pe
                 textTransform="uppercase"
                 ml="2"
               >
-                {persona.username}
+                {persona.tag}
               </Box>
             </Box>
             <Box
@@ -38,8 +38,8 @@ export const Persona = ({ persona, role, mb = 0 }: { persona: IPersona, role: Pe
                 role == PersonaRole.verified && 
                 (<>
                 <br/>
-                <Text color="green.300" fontSize="xs">{persona.address}</Text>
-                <Text color="green.300" fontSize="xs">{persona.phone}</Text>
+                <Text color="green.300" fontSize="xs">{persona.proof}</Text>
+                <Text color="green.300" fontSize="xs">{persona.proofMetadata}</Text>
                 </>)
               
               }

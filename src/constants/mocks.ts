@@ -1,37 +1,39 @@
 export const Glenda = {
-  username: "user",
+  tag: "user",
   firstName: "Glenda",
   lastName: "Smith",
-  address: "294 Karen Dr",
-  phone: "(324)-314-5288",
+  proof: "Covid Test Negative",
+  proofMetadata: "56hrs 34m 17s left",
   avatarSrc: "https://randomuser.me/api/portraits/women/79.jpg",
   email: "glenda.smith@gmail.com",
 }
 
 export const Nathan = {
-  username: "user",
+  tag: "user",
   firstName: "Nathan",
   lastName: "Mitchell",
+  proof: "Older than 18 years",
+  proofMetadata: "Since 2016",
   avatarSrc: "https://randomuser.me/api/portraits/men/94.jpg",
   email: "nathan.mitchell@aol.com"
 }
 
 export const Tizoc = {
-  username: "tizoc",
+  tag: "tizoc",
   firstName: "Tizoc",
   lastName: "Zystems",
   email: "Attestation Engine"
 }
 
 export const Airport = {
-  username: "airport",
+  tag: "airport",
   firstName: "Adolfo",
   lastName: "Suárez",
   email: "International Airport"
 }
 
 export const Javier = {
-  username: "employee",
+  tag: "employee",
   firstName: "Javier",
   lastName: "Gómez",
   avatarSrc: "https://randomuser.me/api/portraits/men/77.jpg",
