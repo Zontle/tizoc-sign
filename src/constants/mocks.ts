@@ -1,5 +1,5 @@
 export const Glenda = {
-  username: "g.smith",
+  username: "user",
   firstName: "Glenda",
   lastName: "Smith",
   address: "294 Karen Dr",
@@ -9,15 +9,29 @@ export const Glenda = {
 }
 
 export const Nathan = {
-  username: "nathan.mitch85",
+  username: "user",
   firstName: "Nathan",
   lastName: "Mitchell",
   avatarSrc: "https://randomuser.me/api/portraits/men/94.jpg",
   email: "nathan.mitchell@aol.com"
 }
 
+export const Tizoc = {
+  username: "tizoc",
+  firstName: "Tizoc",
+  lastName: "Zystems",
+  email: "Attestation Engine"
+}
+
+export const Airport = {
+  username: "airport",
+  firstName: "Adolfo",
+  lastName: "Suárez",
+  email: "International Airport"
+}
+
 export const Javier = {
-  username: "javi-gm2018",
+  username: "employee",
   firstName: "Javier",
   lastName: "Gómez",
   avatarSrc: "https://randomuser.me/api/portraits/men/77.jpg",

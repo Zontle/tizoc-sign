@@ -1,9 +1,9 @@
 import { Box, Badge, Avatar, AvatarBadge, Text } from '@chakra-ui/react'
 import { IPersona, PersonaRole, PersonaColors } from '../commons/persona'
 
-export const Persona = ({ persona, role }: { persona: IPersona, role: PersonaRole }) => {
+export const Persona = ({ persona, role, mb = 0 }: { persona: IPersona, role: PersonaRole, mb?: number }) => {
   return (
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" mb={mb}>
       <Box p="6">
         <Box d="flex" alignItems="center">
           <Avatar name={`${persona.firstName} ${persona.lastName}`} src={persona.avatarSrc} mr="3">

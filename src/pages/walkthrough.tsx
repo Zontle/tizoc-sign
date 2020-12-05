@@ -17,7 +17,7 @@ const WalkthroughPage = () => (
         </Badge>
       </Heading>
       <Text fontSize="2xl">
-        Learn the features Tizoc provides to any enterprise with custodial attestation requirements.
+        Learn the features Tizoc provides to any enterprise with offline attestation requirements.
         <Text fontSize="xl" color="gray.600">Click on the middle sections of each step to see the descripted steps for the walkthrough.</Text>
       </Text>
       
@@ -33,7 +33,7 @@ const WalkthroughPage = () => (
     </Main>
     <DarkModeSwitch />
     <Footer>
-      <Text>By <ChakraLink textDecoration="underline" isExternal href="https://zontle.tech/" flexGrow={1}>Zontle</ChakraLink>, a submission to the <ChakraLink textDecoration="underline" isExternal href="https://santander.devpost.com/" flexGrow={1}>2020 Santander Hackathon</ChakraLink></Text>
+      <Text>By <ChakraLink textDecoration="underline" isExternal href="https://enigma.sh/" flexGrow={1}>E Nigma Technologies OÜ</ChakraLink>, a submission to the <ChakraLink textDecoration="underline" isExternal href="https://santander.devpost.com/" flexGrow={1}>2020 Santander Hackathon</ChakraLink></Text>
     </Footer>
     <Home />
   </Container>

@@ -15,10 +15,10 @@ export const CTA = () => (
       flexGrow={3}
       mx={2}
       my={2}
-      href="/walkthrough"
-      as={`/walkthrough`}
+      href="/use-cases"
+      as={`/use-cases`}
     >
-      <Button width="100%" variant="outline" colorScheme="green">
+      <Button width="100%" variant="outline" colorScheme="yellow">
         Use Cases
       </Button>
     </NextChakraLink>
@@ -29,7 +29,7 @@ export const CTA = () => (
       href="/walkthrough"
       as={`/walkthrough`}
     >
-      <Button width="100%" variant="solid" colorScheme="green">
+      <Button width="100%" variant="solid" colorScheme="yellow">
         View Walkthrough
       </Button>
     </NextChakraLink>

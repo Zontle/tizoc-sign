@@ -21,35 +21,34 @@ const Index = () => (
     <Main>
       <Hero title="Tizoc" />
       <Text>
-        Tizoc is a turnkey solution for <Code>data attestation</Code>{' '}
-        that uses <Code>custodial blockchain wallets</Code> for attestation payment services, with
-        proofs discoverable via the <Code>Ethereum blockchain</Code> and files shared encrypted via{' '}
-        the <Code>IPFS network</Code>.
+        Tizoc is a solution for <Code>offline data attestation</Code> that uses <Code>custodial blockchain wallets</Code>{' '}
+        for attestation payment services, which generates timestamped proofs on the <Code>Ethereum blockchain</Code>.{' '}
+        All proofs are encrypted and stored in the <Code>IPFS network</Code>.
       </Text>
 
       <List spacing={3} my={0}>
         <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          User management with data verification via the <ChakraLink textDecoration="underline" isExternal href="https://gruposantander.github.io/digital-trust-docs/" flexGrow={1}>Digital Trust Protocol</ChakraLink>, a consumer privacy-first OpenID (OIDC) identity service.
+          <ListIcon as={CheckCircleIcon} color="yellow.500" />
+          Initial data attestation verification via the <ChakraLink textDecoration="underline" isExternal href="https://gruposantander.github.io/digital-trust-docs/" flexGrow={1}>Digital Trust Protocol</ChakraLink>, a consumer privacy-first OpenID (OIDC) implementation.
         </ListItem>
         <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
+          <ListIcon as={CheckCircleIcon} color="yellow.500" />
           Custodial accounts are created as <ChakraLink textDecoration="underline" isExternal href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" flexGrow={1}>secp256k1-ECDSA</ChakraLink> based Ethereum wallets using HSM-based keys via a regulated cloud provider.
         </ListItem>
         <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          Files are encrypted using <ChakraLink textDecoration="underline" isExternal href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt#AES-GCM" flexGrow={1}>AES-GCM on 256 bits</ChakraLink>, and shared using a <ChakraLink textDecoration="underline" isExternal href="https://en.wikipedia.org/wiki/Key_Wrap" flexGrow={1}>Key Wrapping</ChakraLink> model via the <ChakraLink textDecoration="underline" isExternal href="https://ipfs.io/" flexGrow={1}>IPFS Network</ChakraLink>.
+          <ListIcon as={CheckCircleIcon} color="yellow.500" />
+          Proofs are end-to-end encrypted using the <ChakraLink textDecoration="underline" isExternal href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt#AES-CBC" flexGrow={1}>Web Cryptography API</ChakraLink>, and shared using a <ChakraLink textDecoration="underline" isExternal href="https://en.wikipedia.org/wiki/Key_Wrap" flexGrow={1}>Key Wrapping</ChakraLink> model via the <ChakraLink textDecoration="underline" isExternal href="https://ipfs.io/" flexGrow={1}>IPFS Network</ChakraLink>.
         </ListItem>
         <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          Attestations proofs are discoverable via the <ChakraLink textDecoration="underline" isExternal href="https://ethereum.org/en/" flexGrow={1}>Ethereum Blockchain</ChakraLink>, searcheable and downloadeable.
+          <ListIcon as={CheckCircleIcon} color="yellow.500" />
+          Attestations proofs are timestamped by the <ChakraLink textDecoration="underline" isExternal href="https://ethereum.org/en/" flexGrow={1}>Ethereum Blockchain</ChakraLink>, and can be verified offline via a downloadable certificate.
         </ListItem>
       </List>
     </Main>
 
     <DarkModeSwitch />
     <Footer>
-      <Text>By <ChakraLink textDecoration="underline" isExternal href="https://zontle.tech/" flexGrow={1}>Zontle</ChakraLink>, a submission to the <ChakraLink textDecoration="underline" isExternal href="https://santander.devpost.com/" flexGrow={1}>2020 Santander Hackathon</ChakraLink></Text>
+      <Text>By <ChakraLink textDecoration="underline" isExternal href="https://enigma.sh/" flexGrow={1}>E Nigma Technologies OÜ</ChakraLink>, a submission to the <ChakraLink textDecoration="underline" isExternal href="https://santander.devpost.com/" flexGrow={1}>2020 Santander Hackathon</ChakraLink></Text>
     </Footer>
     <CTA />
   </Container>
