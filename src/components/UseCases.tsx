@@ -4,6 +4,7 @@ import { Persona } from "./Persona"
 import { Claudia, Nathan, Tizoc, Alberto, Andy } from "../constants/mocks"
 import { PersonaRole } from "../commons/persona"
 import React from "react"
+import { ChevronRightIcon } from "@chakra-ui/icons"
 
 const Section1 = () => (
   <Section
@@ -14,11 +15,13 @@ const Section1 = () => (
     Protocol (DTP), to then be printed offline for quick verification, reducing queue times."
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box>
+      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
         <Persona persona={Claudia} role={PersonaRole.registered} />
+        <ChevronRightIcon ml="10" />
       </Box>
       <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
         <Persona persona={Tizoc} role={PersonaRole.service} />
+        <ChevronRightIcon ml="10" />
       </Box>
       <Box>
         <Persona persona={Claudia} role={PersonaRole.verified} />
@@ -36,11 +39,13 @@ const Section2 = () => (
     Tizoc can create offline proofs that disclose only majority of age, and can be corroborated online when needed."
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box>
+      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
         <Persona persona={Nathan} role={PersonaRole.registered} />
+        <ChevronRightIcon ml="10" />
       </Box>
       <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
         <Persona persona={Tizoc} role={PersonaRole.service} />
+        <ChevronRightIcon ml="10" />
       </Box>
       <Box>
         <Persona persona={Nathan} role={PersonaRole.verified} />
@@ -58,11 +63,13 @@ const Section3 = () => (
     that the proof was issued cryptographically against a trusted identity provider."
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box>
+      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
         <Persona persona={Alberto} role={PersonaRole.registered} />
+        <ChevronRightIcon ml="10" />
       </Box>
       <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
         <Persona persona={Tizoc} role={PersonaRole.service} />
+        <ChevronRightIcon ml="10" />
       </Box>
       <Box>
         <Persona persona={Alberto} role={PersonaRole.verified} />
@@ -80,11 +87,13 @@ const Section4 = () => (
     the require information for poll workers who can then check them when needed."
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box>
+      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
         <Persona persona={Andy} role={PersonaRole.registered} />
+        <ChevronRightIcon ml="10" />
       </Box>
       <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
         <Persona persona={Tizoc} role={PersonaRole.service} />
+        <ChevronRightIcon ml="10" />
       </Box>
       <Box>
         <Persona persona={Andy} role={PersonaRole.verified} />
