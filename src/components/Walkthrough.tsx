@@ -1,7 +1,7 @@
 import { Section } from "./Section"
 import { SimpleGrid, Box, Text } from "@chakra-ui/react"
 import { Persona } from "./Persona"
-import { Glenda, Javier, Tizoc, Airport } from "../constants/mocks"
+import { Claudia, Javier, Tizoc, Airport } from "../constants/mocks"
 import { PersonaRole } from "../commons/persona"
 import React from "react"
 import { Container } from "./layout/Container"
@@ -14,13 +14,13 @@ const Section1 = () => (
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
       <Box>
-        <Persona persona={Glenda} role={PersonaRole.registered} />
+        <Persona persona={Claudia} role={PersonaRole.registered} />
       </Box>
       <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center" border="1px gray dotted">
         <Text textAlign="center">1. Complete Santander DTP</Text>
       </Box>
       <Box>
-        <Persona persona={Glenda} role={PersonaRole.verified} />
+        <Persona persona={Claudia} role={PersonaRole.verified} />
       </Box>
     </SimpleGrid>
   </Section>
@@ -34,7 +34,7 @@ const Section2 = () => (
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
       <Box>
-        <Persona persona={Glenda} role={PersonaRole.verified} />
+        <Persona persona={Claudia} role={PersonaRole.verified} />
       </Box>
       <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center" border="1px gray dotted">
         <Container>
@@ -59,7 +59,7 @@ const Section3 = () => (
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
       <Box>
-        <Persona persona={Glenda} role={PersonaRole.verified} mb={2}/>
+        <Persona persona={Claudia} role={PersonaRole.verified} mb={2}/>
         <Persona persona={Airport} role={PersonaRole.company} />
       </Box>
       <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center" border="1px gray dotted">
@@ -96,7 +96,7 @@ const Section4 = () => (
         </Container>
       </Box>
       <Box>
-        <Persona persona={Glenda} role={PersonaRole.verified} mb={2}/>
+        <Persona persona={Claudia} role={PersonaRole.verified} mb={2}/>
         <Persona persona={Javier} role={PersonaRole.backoffice} />
       </Box>
     </SimpleGrid>
@@ -111,7 +111,7 @@ const Section5 = () => (
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
       <Box>
-        <Persona persona={Glenda} role={PersonaRole.verified} />
+        <Persona persona={Claudia} role={PersonaRole.verified} />
       </Box>
       <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center" border="1px gray dotted">
         <Container>

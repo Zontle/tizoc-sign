@@ -16,13 +16,12 @@ const UseCasesPage = () => (
       <Text fontSize="2xl">
         Learn the motivation behind Tizoc and some of its use cases.
       </Text>
-      
-
       <Divider mb="10" />
 
       <UseCases.Section1 />
       <UseCases.Section2 />
       <UseCases.Section3 />
+      <UseCases.Section4 />
 
     </Main>
     <DarkModeSwitch />

@@ -15,6 +15,17 @@ export const CTA = () => (
       flexGrow={3}
       mx={2}
       my={2}
+      href="/motivation"
+      as={`/motivation`}
+    >
+      <Button width="100%" variant="outline" colorScheme="yellow">
+        Motivation
+      </Button>
+    </NextChakraLink>
+    <NextChakraLink
+      flexGrow={3}
+      mx={2}
+      my={2}
       href="/use-cases"
       as={`/use-cases`}
     >

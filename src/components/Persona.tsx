@@ -6,9 +6,12 @@ export const Persona = ({ persona, role, mb = 0 }: { persona: IPersona, role: Pe
     <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" mb={mb}>
       <Box p="6">
         <Box d="flex" alignItems="center">
-          <Avatar name={`${persona.firstName} ${persona.lastName}`} src={persona.avatarSrc} mr="3">
-            <AvatarBadge boxSize="1.25em" bg={ `${PersonaColors[role]}.300` } />
-          </Avatar>
+          {
+            role != PersonaRole.registered && 
+            <Avatar name={`${persona.firstName} ${persona.lastName}`} src={persona.avatarSrc} mr="3">
+              <AvatarBadge boxSize="1.25em" bg={ `${PersonaColors[role]}.300` } />
+            </Avatar>
+          }
           <Box d="flex" alignItems="baseline" flexDirection="column">
             <Box d="flex" alignItems="baseline">
               <Badge borderRadius="full" px="2" colorScheme={ PersonaColors[role] }>
