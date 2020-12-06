@@ -17,8 +17,8 @@ const WalkthroughPage = () => (
         </Badge>
       </Heading>
       <Text fontSize="2xl">
-        Learn the features Tizoc provides to any enterprise with offline attestation requirements.
-        <Text fontSize="xl" color="gray.600">Click on the middle sections of each step to see the descripted steps for the walkthrough in action.</Text>
+        Learn how Tizoc provides to any enterprise with offline attestation requirements.
+        <Text fontSize="xl" color="gray.600">Click on the buttons inside the Tizoc section of each step to see the descripted steps for the walkthrough in action.</Text>
       </Text>
       
 

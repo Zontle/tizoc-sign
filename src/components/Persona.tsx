@@ -1,10 +1,10 @@
 import { Box, Badge, Avatar, AvatarBadge, Text } from '@chakra-ui/react'
 import { IPersona, PersonaRole, PersonaColors } from '../commons/persona'
 
-export const Persona = ({ persona, role, mb = 0 }: { persona: IPersona, role: PersonaRole, mb?: number }) => {
+export const Persona = ({ persona, role, mb = 0, children, viewIcon }: { persona: IPersona, role: PersonaRole, mb?: number, children?: React.ReactNode, viewIcon?: React.ReactNode }) => {
   return (
     <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" mb={mb}>
-      <Box p="6">
+      <Box alignItems="center" p="4" justifyContent="center">
         <Box d="flex" alignItems="center">
           {
             role != PersonaRole.registered && 
@@ -18,14 +18,18 @@ export const Persona = ({ persona, role, mb = 0 }: { persona: IPersona, role: Pe
                 { role }
               </Badge>
               <Box
+                d="flex"
                 color="gray.500"
                 fontWeight="semibold"
                 letterSpacing="wide"
                 fontSize="xs"
                 textTransform="uppercase"
                 ml="2"
+                alignItems="center"
+                justifyContent="space-around"
               >
                 {persona.tag}
+                {viewIcon}
               </Box>
             </Box>
             <Box
@@ -55,6 +59,7 @@ export const Persona = ({ persona, role, mb = 0 }: { persona: IPersona, role: Pe
             </Box>
           </Box>
         </Box>
+        {children}
       </Box>
     </Box>
   )

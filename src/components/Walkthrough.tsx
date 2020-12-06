@@ -1,10 +1,11 @@
 import { Section } from "./Section"
-import { SimpleGrid, Box, Text } from "@chakra-ui/react"
+import { SimpleGrid, Box, Text, Button, ButtonGroup } from "@chakra-ui/react"
 import { Persona } from "./Persona"
 import { Claudia, Javier, Tizoc, Airport } from "../constants/mocks"
 import { PersonaRole } from "../commons/persona"
 import React from "react"
 import { Container } from "./layout/Container"
+import { ChevronRightIcon, CheckIcon, RepeatIcon, SmallAddIcon, ViewIcon, UnlockIcon } from "@chakra-ui/icons"
 
 const Section1 = () => (
   <Section
@@ -13,11 +14,17 @@ const Section1 = () => (
         created by Santander, to obtain data attestations from a trusted authorised party."
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box>
+      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
         <Persona persona={Claudia} role={PersonaRole.registered} />
+        <ChevronRightIcon ml="10" />
       </Box>
-      <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center" border="1px gray dotted">
-        <Text textAlign="center">1. Complete Santander DTP</Text>
+      <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
+        <Persona persona={Tizoc} role={PersonaRole.service} >
+          <Button width="100%" rightIcon={<CheckIcon />} px="2" size="xs" variant="solid" colorScheme="yellow" mt="2">
+            Verify
+          </Button>
+        </Persona>
+        <ChevronRightIcon ml="10" />
       </Box>
       <Box>
         <Persona persona={Claudia} role={PersonaRole.verified} />
@@ -33,19 +40,29 @@ const Section2 = () => (
     your company to be able to request the previously attested data. The certificate is encrypted, and uploaded to the IPFS Network."
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box>
+      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
         <Persona persona={Claudia} role={PersonaRole.verified} />
+        <ChevronRightIcon ml="10" />
       </Box>
-      <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center" border="1px gray dotted">
-        <Container>
-          <Text textAlign="center">1. Generate certificate as PDF </Text>
-          <Text textAlign="center">2. Generate key for user</Text>
-          <Text textAlign="center">3. Upload encrypted file to IPFS</Text>
-          <Text textAlign="center">4. Show certificate as link</Text>
-        </Container>
+      <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
+        <Persona persona={Tizoc} role={PersonaRole.service} >
+          <ButtonGroup variant="solid" size="xs" spacing="2" mt="2" colorScheme="yellow">
+            <Button rightIcon={<SmallAddIcon />}>
+              Create Key
+            </Button>
+            <Button rightIcon={<SmallAddIcon />}>
+              Generate PDF
+            </Button>
+          </ButtonGroup>
+        </Persona>
+        <ChevronRightIcon ml="10" />
       </Box>
       <Box>
-        <Persona persona={Tizoc} role={PersonaRole.service} />
+        <Persona persona={Claudia} role={PersonaRole.verified} viewIcon={
+          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="teal" ml="2">
+            PDF
+          </Button>
+        } />
       </Box>
     </SimpleGrid>
   </Section>
@@ -59,7 +76,7 @@ const Section3 = () => (
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
       <Box>
-        <Persona persona={Claudia} role={PersonaRole.verified} mb={2}/>
+        <Persona persona={Claudia} role={PersonaRole.verified} mb={2} />
         <Persona persona={Airport} role={PersonaRole.company} />
       </Box>
       <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center" border="1px gray dotted">
@@ -96,7 +113,7 @@ const Section4 = () => (
         </Container>
       </Box>
       <Box>
-        <Persona persona={Claudia} role={PersonaRole.verified} mb={2}/>
+        <Persona persona={Claudia} role={PersonaRole.verified} mb={2} />
         <Persona persona={Javier} role={PersonaRole.backoffice} />
       </Box>
     </SimpleGrid>
