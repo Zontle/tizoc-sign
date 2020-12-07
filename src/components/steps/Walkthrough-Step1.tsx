@@ -1,6 +1,6 @@
 import { SimpleGrid, Box, Button } from "@chakra-ui/react";
 import { Persona } from "../Persona";
-import { Claudia, Tizoc } from "../../constants/mocks";
+import { Claudia, Tizoc, Unknown } from "../../constants/mocks";
 import { PersonaRole } from "../../commons/persona";
 import { ChevronRightIcon, CheckIcon } from "@chakra-ui/icons";
 import { useState } from "react";
@@ -19,6 +19,10 @@ const Stage1 = ({ nextStage }: { nextStage: () => void }) => {
             Verify
           </Button>
         </Persona>
+        <ChevronRightIcon ml="10" />
+      </Box>
+      <Box>
+        <Persona persona={Unknown} role={PersonaRole.unknown} />
       </Box>
     </SimpleGrid>
   )

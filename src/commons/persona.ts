@@ -12,12 +12,14 @@ export enum PersonaRole {
   verified = 'Verified',
   company = 'Company',
   backoffice = 'Company',
-  service = 'Service'
+  service = 'Service',
+  unknown = 'Unknown'
 }
 export const PersonaColors = {
   [PersonaRole.registered]: "blue",
   [PersonaRole.verified]: "teal",
   [PersonaRole.company]: "purple",
   [PersonaRole.service]: "yellow",
-  [PersonaRole.backoffice]: "red"
+  [PersonaRole.backoffice]: "red",
+  [PersonaRole.unknown]: "gray"
 }

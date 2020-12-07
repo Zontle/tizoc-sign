@@ -6,6 +6,7 @@ import { WalkthroughStepThree } from "./steps/Walkthrough-Step3"
 import { WalkthroughStepFour } from "./steps/Walkthrough-Step4"
 import { WalkthroughStepFive } from "./steps/Walkthrough-Step5"
 
+
 const Section1 = () => (
   <Section
     title="1. Obtain verified data using Santander's Digital Trust Protocol"

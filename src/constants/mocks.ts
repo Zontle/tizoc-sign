@@ -1,3 +1,10 @@
+export const Unknown = {
+  tag: "unverified",
+  firstName: "firstname",
+  lastName: "lastname",
+  email: "unknown@gmail.com",
+}
+
 export const Claudia = {
   tag: "user",
   firstName: "Claudia",
