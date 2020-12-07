@@ -4,12 +4,11 @@ import { Persona } from "./Persona"
 import { Claudia, Javier, Tizoc, Airport } from "../constants/mocks"
 import { PersonaRole } from "../commons/persona"
 import React from "react"
-import { Container } from "./layout/Container"
 import { ChevronRightIcon, CheckIcon, SmallAddIcon, ViewIcon, InfoIcon } from "@chakra-ui/icons"
 
 const Section1 = () => (
   <Section
-    title="1. Obtain verified data using the Santander's Digital Trust Protocol"
+    title="1. Obtain verified data using Santander's Digital Trust Protocol"
     subtitle="Protect your users data privacy by leveraging on the Open ID provider DTP (Digital Trust Protocol),
         created by Santander, to obtain data attestations from a trusted authorised party."
   >
@@ -190,13 +189,17 @@ const Section4 = () => (
               <Text>&nbsp; 0.00</Text>
             </Tag>
           </Box>
-        }/>
+        } />
         <Persona persona={Airport} role={PersonaRole.company} viewIcon={
           <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="purple" ml="2">
             Certificate
           </Button>
         }>
-          <Persona persona={Javier} role={PersonaRole.backoffice} mt={4}>
+          <Persona persona={Javier} role={PersonaRole.backoffice} mt={4} viewIcon={
+            <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="red" ml="2">
+              Certificate
+            </Button>
+          }>
             <Button width="100%" rightIcon={<CheckIcon />} px="2" size="xs" variant="solid" colorScheme="red" mt="2">
               Download certificate
             </Button>
@@ -214,17 +217,32 @@ const Section5 = () => (
     downloads the user certificate to allow offline verification via mobile devices or similar without an internet connection."
   >
     <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box>
-        <Persona persona={Claudia} role={PersonaRole.verified} />
+      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
+        <Persona persona={Claudia} role={PersonaRole.registered} light viewIcon={
+          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="blue" ml="-1">
+            Proof
+          </Button>
+        } />
+        <ChevronRightIcon ml="10" />
       </Box>
-      <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center" border="1px gray dotted">
-        <Container>
-          <Text textAlign="center">1. Share proof to external</Text>
-          <Text textAlign="center">2. Verify signature w/cert</Text>
-        </Container>
+      <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
+        <Persona persona={Javier} role={PersonaRole.backoffice} mt={4} viewIcon={
+          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="red" ml="2">
+            Certificate
+            </Button>
+        }>
+          <Button width="100%" rightIcon={<CheckIcon />} px="2" size="xs" variant="solid" colorScheme="red" mt="2">
+            Verify proof
+            </Button>
+        </Persona>
+        <ChevronRightIcon ml="10" />
       </Box>
       <Box>
-        <Persona persona={Javier} role={PersonaRole.backoffice} />
+        <Persona persona={Claudia} role={PersonaRole.verified} light viewIcon={
+          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="green" ml="-1">
+            Proof
+          </Button>
+        } />
       </Box>
     </SimpleGrid>
   </Section>

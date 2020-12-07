@@ -11,7 +11,7 @@ export enum PersonaRole {
   registered = 'Registered',
   verified = 'Verified',
   company = 'Company',
-  backoffice = 'Backoffice',
+  backoffice = 'Company',
   service = 'Service'
 }
 export const PersonaColors = {
