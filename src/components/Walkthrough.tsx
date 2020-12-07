@@ -1,10 +1,10 @@
 import { Section } from "./Section"
-import { SimpleGrid, Box, Text, Button, ButtonGroup, Tag, TagLeftIcon, TagLabel } from "@chakra-ui/react"
-import { Persona } from "./Persona"
-import { Claudia, Javier, Tizoc, Airport } from "../constants/mocks"
-import { PersonaRole } from "../commons/persona"
 import React from "react"
-import { ChevronRightIcon, CheckIcon, SmallAddIcon, ViewIcon, InfoIcon } from "@chakra-ui/icons"
+import { WalkthroughStepOne } from "./steps/Walkthrough-Step1"
+import { WalkthroughStepTwo } from "./steps/Walkthrough-Step2"
+import { WalkthroughStepThree } from "./steps/Walkthrough-Step3"
+import { WalkthroughStepFour } from "./steps/Walkthrough-Step4"
+import { WalkthroughStepFive } from "./steps/Walkthrough-Step5"
 
 const Section1 = () => (
   <Section
@@ -12,23 +12,7 @@ const Section1 = () => (
     subtitle="Protect your users data privacy by leveraging on the Open ID provider DTP (Digital Trust Protocol),
         created by Santander, to obtain data attestations from a trusted authorised party."
   >
-    <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Claudia} role={PersonaRole.registered} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Tizoc} role={PersonaRole.service} >
-          <Button width="100%" rightIcon={<CheckIcon />} px="2" size="xs" variant="solid" colorScheme="yellow" mt="2">
-            Verify
-          </Button>
-        </Persona>
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box>
-        <Persona persona={Claudia} role={PersonaRole.verified} />
-      </Box>
-    </SimpleGrid>
+    <WalkthroughStepOne />
   </Section>
 )
 
@@ -38,32 +22,7 @@ const Section2 = () => (
     subtitle="Based on the data verification, your users can request an offline certification which can be used by 
     your company to be able to request the previously attested data. The certificate is encrypted, and uploaded to the IPFS Network."
   >
-    <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Claudia} role={PersonaRole.verified} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Tizoc} role={PersonaRole.service} >
-          <ButtonGroup variant="solid" size="xs" spacing="2" mt="2" colorScheme="yellow">
-            <Button rightIcon={<SmallAddIcon />}>
-              Create Key
-            </Button>
-            <Button rightIcon={<SmallAddIcon />}>
-              Generate PDF
-            </Button>
-          </ButtonGroup>
-        </Persona>
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box>
-        <Persona persona={Claudia} role={PersonaRole.verified} viewIcon={
-          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="teal" ml="2">
-            PDF
-          </Button>
-        } />
-      </Box>
-    </SimpleGrid>
+    <WalkthroughStepTwo />
   </Section>
 )
 
@@ -73,57 +32,7 @@ const Section3 = () => (
     subtitle="Each user is given their own regulated custodial-based Ethereum wallets based on cloud HSM-keys, so they can pay for 
     the digital signature on the certificate. For instance, as a company you can pay on behalf of the user if needed."
   >
-    <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Claudia} role={PersonaRole.verified} mb={2} viewIcon={
-          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="teal" ml="2">
-            PDF
-          </Button>
-        }>
-          <Button width="100%" rightIcon={<CheckIcon />} px="2" size="xs" variant="solid" colorScheme="green" mt="2">
-            Pay validation fee
-          </Button>
-          <Persona persona={Airport} role={PersonaRole.company} mt={4}>
-            <Button width="100%" rightIcon={<CheckIcon />} px="2" size="xs" variant="solid" colorScheme="purple" mt="2">
-              Pay validation fee
-            </Button>
-          </Persona>
-        </Persona>
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Tizoc} role={PersonaRole.service} >
-          <ButtonGroup variant="solid" size="xs" spacing="2" mt="2" colorScheme="yellow">
-            <Button rightIcon={<SmallAddIcon />}>
-              Create Wallet
-            </Button>
-            <Button rightIcon={<SmallAddIcon />}>
-              Validate payment
-            </Button>
-          </ButtonGroup>
-        </Persona>
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box>
-        <Persona persona={Claudia} role={PersonaRole.verified} viewIcon={
-          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="teal" ml="2">
-            PDF
-          </Button>
-        } wallet={
-          <Box d="flex">
-            <Tag size="sm" mt="2" variant="subtle" colorScheme="cyan">
-              <TagLeftIcon boxSize="12px" as={InfoIcon} />
-              <TagLabel>Address</TagLabel>
-            </Tag>
-            <Tag size="sm" ml="1" mt="2" variant="subtle" colorScheme="cyan">
-              <TagLabel>Balance</TagLabel>
-              <Text>&nbsp; 0.00</Text>
-            </Tag>
-          </Box>
-        }>
-        </Persona>
-      </Box>
-    </SimpleGrid>
+    <WalkthroughStepThree />
   </Section>
 )
 
@@ -134,79 +43,7 @@ const Section4 = () => (
     timestamping the event. The proof is shared to the user and the certificate to your company, which can then be distributed accordingly to your own 
     backoffice employees to be used at checkpoints."
   >
-    <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Claudia} role={PersonaRole.verified} viewIcon={
-          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="teal" ml="2">
-            PDF
-          </Button>
-        } wallet={
-          <Box d="flex">
-            <Tag size="sm" mt="2" variant="subtle" colorScheme="cyan">
-              <TagLeftIcon boxSize="12px" as={InfoIcon} />
-              <TagLabel>Address</TagLabel>
-            </Tag>
-            <Tag size="sm" ml="1" mt="2" variant="subtle" colorScheme="cyan">
-              <TagLabel>Balance</TagLabel>
-              <Text>&nbsp; 0.00</Text>
-            </Tag>
-          </Box>
-        }>
-        </Persona>
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Tizoc} role={PersonaRole.service} >
-          <ButtonGroup variant="solid" size="xs" spacing="2" mt="2" colorScheme="yellow">
-            <Button rightIcon={<SmallAddIcon />}>
-              Create cert
-            </Button>
-            <Button rightIcon={<SmallAddIcon />}>
-              Publish ETH tx
-            </Button>
-          </ButtonGroup>
-        </Persona>
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box>
-        <Persona persona={Claudia} role={PersonaRole.verified} mb={2} viewIcon={
-          <ButtonGroup variant="solid" size="xs" spacing="2" mt="2" colorScheme="green">
-            <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="teal" ml="2">
-              PDF
-            </Button>
-            <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="teal" ml="2">
-              Proof
-            </Button>
-          </ButtonGroup>
-        } wallet={
-          <Box d="flex">
-            <Tag size="sm" mt="2" variant="subtle" colorScheme="cyan">
-              <TagLeftIcon boxSize="12px" as={InfoIcon} />
-              <TagLabel>Address</TagLabel>
-            </Tag>
-            <Tag size="sm" ml="1" mt="2" variant="subtle" colorScheme="cyan">
-              <TagLabel>Balance</TagLabel>
-              <Text>&nbsp; 0.00</Text>
-            </Tag>
-          </Box>
-        } />
-        <Persona persona={Airport} role={PersonaRole.company} viewIcon={
-          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="purple" ml="2">
-            Certificate
-          </Button>
-        }>
-          <Persona persona={Javier} role={PersonaRole.backoffice} mt={4} viewIcon={
-            <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="red" ml="2">
-              Certificate
-            </Button>
-          }>
-            <Button width="100%" rightIcon={<CheckIcon />} px="2" size="xs" variant="solid" colorScheme="red" mt="2">
-              Download certificate
-            </Button>
-          </Persona>
-        </Persona>
-      </Box>
-    </SimpleGrid>
+    <WalkthroughStepFour />
   </Section>
 )
 
@@ -216,35 +53,7 @@ const Section5 = () => (
     subtitle="Your company can verify users by requesting the previously generated digital proof obtained by Tizoc. Your company
     downloads the user certificate to allow offline verification via mobile devices or similar without an internet connection."
   >
-    <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Claudia} role={PersonaRole.registered} light viewIcon={
-          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="blue" ml="-1">
-            Proof
-          </Button>
-        } />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Javier} role={PersonaRole.backoffice} mt={4} viewIcon={
-          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="red" ml="2">
-            Certificate
-            </Button>
-        }>
-          <Button width="100%" rightIcon={<CheckIcon />} px="2" size="xs" variant="solid" colorScheme="red" mt="2">
-            Verify proof
-            </Button>
-        </Persona>
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box>
-        <Persona persona={Claudia} role={PersonaRole.verified} light viewIcon={
-          <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="green" ml="-1">
-            Proof
-          </Button>
-        } />
-      </Box>
-    </SimpleGrid>
+    <WalkthroughStepFive />
   </Section>
 )
 
