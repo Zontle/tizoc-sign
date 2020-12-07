@@ -1,4 +1,4 @@
-import { Heading, Text, Divider, Link as ChakraLink } from "@chakra-ui/react"
+import { Heading, Text, Divider, Link as ChakraLink, useMediaQuery } from "@chakra-ui/react"
 import { Container } from '../components/layout/Container'
 import { Main } from '../components/layout/Main'
 import { DarkModeSwitch } from '../components/common/DarkModeSwitch'
@@ -7,7 +7,10 @@ import * as UseCases from "../components/UseCases"
 import { Footer } from "../components/layout/Footer"
 
 
-const UseCasesPage = () => (
+const UseCasesPage = () => {
+  const [isMd] = useMediaQuery("(min-width: 52em)")
+
+  return (
   <Container minHeight="100vh">
     <Main>
       <Heading as="h1" size="2xl">
@@ -18,10 +21,10 @@ const UseCasesPage = () => (
       </Text>
       <Divider mb="10" />
 
-      <UseCases.Section1 />
-      <UseCases.Section2 />
-      <UseCases.Section3 />
-      <UseCases.Section4 />
+      <UseCases.Section1 isMd={isMd}/>
+      <UseCases.Section2 isMd={isMd}/>
+      <UseCases.Section3 isMd={isMd}/>
+      <UseCases.Section4 isMd={isMd}/>
 
     </Main>
     <DarkModeSwitch />
@@ -30,6 +33,6 @@ const UseCasesPage = () => (
     </Footer>
     <Home />
   </Container>
-)
+)}
 
 export default UseCasesPage

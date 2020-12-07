@@ -4,9 +4,27 @@ import { Persona } from "./Persona"
 import { Claudia, Nathan, Tizoc, Alberto, Andy } from "../constants/mocks"
 import { PersonaRole } from "../commons/persona"
 import React from "react"
-import { ChevronRightIcon } from "@chakra-ui/icons"
+import { ChevronRightIcon, ChevronDownIcon } from "@chakra-ui/icons"
 
-const Section1 = () => (
+const SectionTemplate = ({ firstPersona, secondPersona, thirdPersona, isMd }: { firstPersona: React.ReactNode, secondPersona: React.ReactNode, thirdPersona: React.ReactNode, isMd: Boolean }) => {
+  return (<SimpleGrid columns={5} spacing={10} alignItems="center" display={{ md: "flex" }} justifyContent="center">
+      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
+        { firstPersona }
+      </Box>
+      { isMd ? <ChevronRightIcon m="auto" /> : <ChevronDownIcon my="5" display="block" mx="auto" /> }
+      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
+        { secondPersona }
+      </Box>
+      { isMd ? <ChevronRightIcon m="auto" /> : <ChevronDownIcon my="5" display="block" mx="auto" /> }
+      <Box>
+        { thirdPersona }
+      </Box>
+    </SimpleGrid>
+  )
+}
+
+
+const Section1 = ({ isMd }: { isMd: Boolean }) => (
   <Section
     title="Fast verification of COVID-19 Tests"
     badge="airports"
@@ -14,23 +32,16 @@ const Section1 = () => (
     successful negative tests in the last 72 hours. Using Tizoc, these results can be onboarded via Santander's Digital Trust
     Protocol (DTP), to then be printed offline for quick verification, reducing queue times."
   >
-    <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Claudia} role={PersonaRole.registered} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Tizoc} role={PersonaRole.service} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box>
-        <Persona persona={Claudia} role={PersonaRole.verified} />
-      </Box>
-    </SimpleGrid>
+    <SectionTemplate 
+      firstPersona={<Persona persona={Claudia} role={PersonaRole.registered} />}
+      secondPersona={<Persona persona={Tizoc} role={PersonaRole.service} />}
+      thirdPersona={<Persona persona={Claudia} role={PersonaRole.verified} />}
+      isMd={isMd}
+    />
   </Section>
 )
 
-const Section2 = () => (
+const Section2 = ({ isMd }: { isMd: Boolean }) => (
   <Section
     title="Privacy-aware age check on minors"
     badge="Stores"
@@ -38,23 +49,16 @@ const Section2 = () => (
     that disclose more information than needed. In some cases, stores or clubs need to keep copies of the IDs, exposing the minors.
     Tizoc can create offline proofs that disclose only majority of age, and can be corroborated online when needed."
   >
-    <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Nathan} role={PersonaRole.registered} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Tizoc} role={PersonaRole.service} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box>
-        <Persona persona={Nathan} role={PersonaRole.verified} />
-      </Box>
-    </SimpleGrid>
+    <SectionTemplate 
+      firstPersona={<Persona persona={Nathan} role={PersonaRole.registered} />}
+      secondPersona={<Persona persona={Tizoc} role={PersonaRole.service} />}
+      thirdPersona={<Persona persona={Nathan} role={PersonaRole.verified} />}
+      isMd={isMd}
+    />
   </Section>
 )
 
-const Section3 = () => (
+const Section3 = ({ isMd }: { isMd: Boolean }) => (
   <Section
     title="Contactless tickets for exclusive areas"
     badge="Clubs"
@@ -62,23 +66,16 @@ const Section3 = () => (
     rely on Tizoc's verification system to produce access-like proofs that can be read offline, while remaining safe knowing
     that the proof was issued cryptographically against a trusted identity provider."
   >
-    <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Alberto} role={PersonaRole.registered} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Tizoc} role={PersonaRole.service} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box>
-        <Persona persona={Alberto} role={PersonaRole.verified} />
-      </Box>
-    </SimpleGrid>
+    <SectionTemplate 
+      firstPersona={<Persona persona={Alberto} role={PersonaRole.registered} />}
+      secondPersona={<Persona persona={Tizoc} role={PersonaRole.service} />}
+      thirdPersona={<Persona persona={Alberto} role={PersonaRole.verified} />}
+      isMd={isMd}
+    />
   </Section>
 )
 
-const Section4 = () => (
+const Section4 = ({ isMd }: { isMd: Boolean }) => (
   <Section
     title="Loggable voting for in-person requirements"
     badge="Goverments"
@@ -86,19 +83,12 @@ const Section4 = () => (
     a paper trail to validate elections, which require verification for each voter. By using Tizoc, citizens can safely share only
     the require information for poll workers who can then check them when needed."
   >
-    <SimpleGrid columns={3} spacing={10} alignItems="center">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Andy} role={PersonaRole.registered} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Tizoc} role={PersonaRole.service} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box>
-        <Persona persona={Andy} role={PersonaRole.verified} />
-      </Box>
-    </SimpleGrid>
+    <SectionTemplate 
+      firstPersona={<Persona persona={Andy} role={PersonaRole.registered} />}
+      secondPersona={<Persona persona={Tizoc} role={PersonaRole.service} />}
+      thirdPersona={<Persona persona={Andy} role={PersonaRole.verified} />}
+      isMd={isMd}
+    />
   </Section>
 )
 
