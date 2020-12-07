@@ -1,4 +1,4 @@
-import { Heading, Text, Divider, Badge, Link as ChakraLink, ButtonGroup, Button } from "@chakra-ui/react"
+import { Heading, Text, Divider, Link as ChakraLink, ButtonGroup, Button } from "@chakra-ui/react"
 import { Container } from '../components/layout/Container'
 import { Main } from '../components/layout/Main'
 import { DarkModeSwitch } from '../components/common/DarkModeSwitch'
@@ -28,17 +28,9 @@ const WalkthroughPage = () => {
   return (
     <Container minHeight="100vh">
       <Main>
-        <Heading as="h1" size="2xl">
+        <Heading as="h1" size="2xl" d="flex" alignItems="center">
           Tizoc Walkthrough
-        <Badge ml="1" fontSize="0.3em" mx="2" borderRadius="10px" p="2" colorScheme="green">
-            Interactive
-        </Badge>
-        </Heading>
-        <Text fontSize="2xl">
-          Learn how Tizoc provides offline attestation requirements to any enterprise.
-        <Text fontSize="xl" color="gray.600">Click on the buttons inside of each section for each step to see the descripted steps in action.</Text>
-        </Text>
-        <ButtonGroup variant="solid" size="xs" isAttached mt="2" colorScheme="yellow">
+        <ButtonGroup variant="solid" size="xs" isAttached ml="2" mt="2" colorScheme="yellow">
           {
             Array.from(Array(STEPS).keys()).map( step => 
               (<Button 
@@ -51,9 +43,15 @@ const WalkthroughPage = () => {
             )
           }
         </ButtonGroup>
+        </Heading>
+        <Text fontSize="2xl">
+          Learn how Tizoc provides offline attestation requirements to any enterprise.
+        <Text fontSize="xl" color="gray.600">Click on the buttons inside of each section for each step to see the descripted steps in action.</Text>
+        </Text>
+        
 
 
-        <Divider mb="10" />
+        <Divider mb="5" />
         
         <DynamicStep/>
 
