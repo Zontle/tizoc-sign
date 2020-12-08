@@ -11,7 +11,6 @@ import { useState } from "react"
 const WalkthroughPage = () => {
   const [isMd] = useMediaQuery("(min-width: 52em)")
   const [currentStep, useCurrentStep] = useState(0)
-  const STEPS = 5
 
   const steps = [
     Walkthrough.Section1,
@@ -23,10 +22,10 @@ const WalkthroughPage = () => {
 
   const DynamicStep = ({ isMd }: { isMd: Boolean } ) => {
     const RenderableStep = steps[currentStep]
-    return <RenderableStep isMd={isMd} nextStep={() => currentStep < STEPS - 1 ? nextStep(currentStep) : () => {}} />
+    return <RenderableStep isMd={isMd} nextStep={() => currentStep < steps.length - 1 ? nextStep(currentStep) : () => {}} />
   }
 
-  const nextStep = (step: number) => { console.log('Next Step', step); return useCurrentStep(step + 1) }
+  const nextStep = (step: number) => { return useCurrentStep(step + 1) }
 
   return (
     <Container minHeight="100vh">
@@ -36,7 +35,7 @@ const WalkthroughPage = () => {
           Tizoc Walkthrough
         <ButtonGroup variant="solid" size="xs" isAttached ml="2" mt="2" colorScheme="yellow">
           {
-            Array.from(Array(STEPS).keys()).map( step => 
+            Array.from(steps.map((_, step) => 
               (<Button 
                 key={step}
                 variant={currentStep === step ? "solid" : "outline"}
@@ -44,7 +43,7 @@ const WalkthroughPage = () => {
                 >
                   Step {step + 1}
                 </Button>)
-            )
+            ))
           }
         </ButtonGroup>
         </Heading>

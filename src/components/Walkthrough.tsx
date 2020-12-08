@@ -36,10 +36,13 @@ export const WalkthroughStepTemplate = ({ isMd, nextStep, stages }: { isMd: Bool
   const [currentStage, useStage] = useState(0)
 
   const DynamicStage = ({ isMd }: { isMd: Boolean }) => {
-    const RenderableStep = stages[currentStage]
-    return <RenderableStep isMd={isMd} nextStage={() => {
-      useStage(currentStage+1)
-    }}/>
+    const RenderableStage = stages[currentStage]
+    return <RenderableStage 
+      isMd={isMd}
+      nextStage={
+        currentStage < stages.length - 1 ? () => useStage(currentStage+1) : () => {}
+      }
+    />
   }
 
   return (
