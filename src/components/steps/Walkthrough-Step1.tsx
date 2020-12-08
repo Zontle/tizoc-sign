@@ -1,56 +1,45 @@
-import { SimpleGrid, Box, Button } from "@chakra-ui/react";
+import { Button, Box } from "@chakra-ui/react";
 import { Persona } from "../Persona";
 import { Claudia, Tizoc, Unknown } from "../../constants/mocks";
 import { PersonaRole } from "../../commons/persona";
-import { ChevronRightIcon, CheckIcon } from "@chakra-ui/icons";
+import { CheckIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { Container } from "../layout/Container";
+import { WalkthroughStageTemplate } from "../Walkthrough";
 
-const Stage1 = ({ nextStage }: { nextStage: () => void }) => {
+
+
+const Stage1 = ({ nextStage, isMd }: { nextStage: () => void, isMd: Boolean }) => {
   return (
-    <SimpleGrid columns={3} spacing={10} alignItems="center" mt="5" height="150px">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Claudia} role={PersonaRole.registered} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Tizoc} role={PersonaRole.service} >
+    <WalkthroughStageTemplate
+      firstPersona={<Persona persona={Claudia} role={PersonaRole.registered} />}
+      secondPersona={<Persona persona={Tizoc} role={PersonaRole.service}>
           <Button width="100%" onClick={nextStage} rightIcon={<CheckIcon />} px="2" size="xs" variant="solid" colorScheme="yellow" mt="2">
             Verify
           </Button>
-        </Persona>
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box>
-        <Persona persona={Unknown} role={PersonaRole.unknown} />
-      </Box>
-    </SimpleGrid>
+        </Persona>}
+      thirdPersona={<Persona persona={Unknown} role={PersonaRole.unknown} loading={true} />}
+      isMd={isMd}
+    />
   )
 }
 
-const Stage2 = () => {
+const Stage2 = ({ isMd }: { isMd: Boolean }) => {
   return (
-    <SimpleGrid columns={3} spacing={10} alignItems="center" mt="5" height="150px">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Claudia} role={PersonaRole.registered} />
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box height="80px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        <Persona persona={Tizoc} role={PersonaRole.service} >
-          <Button width="100%" rightIcon={<CheckIcon />} px="2" size="xs" variant="solid" colorScheme="yellow" mt="2">
+    <WalkthroughStageTemplate
+      firstPersona={<Persona persona={Claudia} role={PersonaRole.registered} />}
+      secondPersona={<Persona persona={Tizoc} role={PersonaRole.service}>
+          <Button width="100%" disabled rightIcon={<CheckIcon />} px="2" size="xs" variant="solid" colorScheme="yellow" mt="2">
             Verify
           </Button>
-        </Persona>
-        <ChevronRightIcon ml="10" />
-      </Box>
-      <Box>
-        <Persona persona={Claudia} role={PersonaRole.verified} />
-      </Box>
-    </SimpleGrid>
+        </Persona>}
+      thirdPersona={<Persona persona={Claudia} role={PersonaRole.verified} />}
+      isMd={isMd}
+    />
   )
 }
 
-export const WalkthroughStepOne = () => {
+export const WalkthroughStepOne = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void } ) => {
   const [currentStage, useStage] = useState(0)
 
   const stages = [
@@ -58,15 +47,21 @@ export const WalkthroughStepOne = () => {
     Stage2,
   ];
 
-  const DynamicStage = () => {
+  const DynamicStage = ({ isMd }: { isMd: Boolean }) => {
     const RenderableStep = stages[currentStage]
-    return <RenderableStep nextStage={() => useStage(currentStage+1)}/>
+    return <RenderableStep isMd={isMd} nextStage={() => useStage(currentStage+1)}/>
   }
 
   return (
   <Container>
-    <DynamicStage />
-    { currentStage == stages.length - 1 && <Button position="absolute" bottom="-50px" mt="10" onClick={() => useStage(0)}>Reset</Button> }
+    <DynamicStage isMd={isMd} />
+    { 
+      currentStage == stages.length - 1 &&
+      <Box position="absolute" bottom="-50px" mt="10">
+        <Button onClick={() => useStage(0)}>Reset</Button>
+        <Button ml="2" variant="solid" colorScheme="yellow" onClick={nextStep}>Next</Button>
+      </Box>
+    }
   </Container>
   )
 }

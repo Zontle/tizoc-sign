@@ -1,8 +1,8 @@
 export const Unknown = {
-  tag: "unverified",
+  tag: "user",
   firstName: "firstname",
   lastName: "lastname",
-  email: "unknown@gmail.com",
+  email: "fakeemail?@gmail.com",
 }
 
 export const Claudia = {

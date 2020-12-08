@@ -5,15 +5,35 @@ import { WalkthroughStepTwo } from "./steps/Walkthrough-Step2"
 import { WalkthroughStepThree } from "./steps/Walkthrough-Step3"
 import { WalkthroughStepFour } from "./steps/Walkthrough-Step4"
 import { WalkthroughStepFive } from "./steps/Walkthrough-Step5"
+import { SimpleGrid, Box } from "@chakra-ui/react"
+import { ChevronRightIcon, ChevronDownIcon } from "@chakra-ui/icons"
 
 
-const Section1 = () => (
+export const WalkthroughStageTemplate = ({ firstPersona, secondPersona, thirdPersona, isMd }: { firstPersona: React.ReactNode, secondPersona: React.ReactNode, thirdPersona: React.ReactNode, isMd: Boolean }) => {
+  return (
+    <SimpleGrid columns={5} spacing={10} alignItems="center" display={{ md: "flex" }} justifyContent="center">
+      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
+        { firstPersona }
+      </Box>
+      { !isMd ? <ChevronDownIcon my="5" display="block" mx="auto" /> : <ChevronRightIcon m="auto" /> }
+      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
+        { secondPersona }
+      </Box>
+      { !isMd ? <ChevronDownIcon my="5" display="block" mx="auto" /> : <ChevronRightIcon m="auto" /> }
+      <Box>
+        { thirdPersona }
+      </Box>
+    </SimpleGrid>
+  )
+}
+
+const Section1 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => (
   <Section
     title="1. Obtain verified data using Santander's Digital Trust Protocol"
     subtitle="Protect your users data privacy by leveraging on the Open ID provider DTP (Digital Trust Protocol),
         created by Santander, to obtain data attestations from a trusted authorised party."
   >
-    <WalkthroughStepOne />
+    <WalkthroughStepOne isMd={isMd} nextStep={nextStep}/>
   </Section>
 )
 
