@@ -1,13 +1,15 @@
-import { SimpleGrid, Box, Button, ButtonGroup, Tag, TagLeftIcon, TagLabel, Text } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Tag, TagLeftIcon, TagLabel, Text } from "@chakra-ui/react";
 import { Persona } from "../Persona";
 import { Claudia, Airport, Tizoc } from "../../constants/mocks";
 import { PersonaRole } from "../../commons/persona";
-import { ViewIcon, CheckIcon, ChevronRightIcon, SmallAddIcon, InfoIcon } from "@chakra-ui/icons";
+import { ViewIcon, CheckIcon, SmallAddIcon, InfoIcon } from "@chakra-ui/icons";
+import { WalkthroughStageTemplate, WalkthroughStepTemplate } from "../Walkthrough";
 
-export const WalkthroughStepThree = () => (
-  <SimpleGrid columns={3} spacing={10} alignItems="center">
-    <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-      <Persona persona={Claudia} role={PersonaRole.verified} mb={2} viewIcon={
+
+const Stage1 = ({ isMd }: { isMd: Boolean }) => {
+  return (
+    <WalkthroughStageTemplate
+      firstPersona={<Persona persona={Claudia} role={PersonaRole.verified} mb={2} viewIcon={
         <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="teal" ml="2">
           PDF
           </Button>
@@ -20,11 +22,8 @@ export const WalkthroughStepThree = () => (
             Pay validation fee
             </Button>
         </Persona>
-      </Persona>
-      <ChevronRightIcon ml="10" />
-    </Box>
-    <Box height="120px" d="flex" alignContent="center" alignItems="center" justifyContent="center">
-      <Persona persona={Tizoc} role={PersonaRole.service} >
+      </Persona>}
+      secondPersona={<Persona persona={Tizoc} role={PersonaRole.service} >
         <ButtonGroup variant="solid" size="xs" spacing="2" mt="2" colorScheme="yellow">
           <Button rightIcon={<SmallAddIcon />}>
             Create Wallet
@@ -33,11 +32,8 @@ export const WalkthroughStepThree = () => (
             Validate payment
             </Button>
         </ButtonGroup>
-      </Persona>
-      <ChevronRightIcon ml="10" />
-    </Box>
-    <Box>
-      <Persona persona={Claudia} role={PersonaRole.verified} viewIcon={
+      </Persona>}
+      thirdPersona={<Persona persona={Claudia} role={PersonaRole.verified} viewIcon={
         <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="teal" ml="2">
           PDF
           </Button>
@@ -53,7 +49,22 @@ export const WalkthroughStepThree = () => (
           </Tag>
         </Box>
       }>
-      </Persona>
-    </Box>
-  </SimpleGrid>
-)
+      </Persona>}
+      isMd={isMd}
+    />
+  )
+}
+
+export const WalkthroughStepThree = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => {
+  const stages = [
+    Stage1,
+  ];
+
+  return (
+    <WalkthroughStepTemplate
+      nextStep={nextStep}
+      isMd={isMd}
+      stages={stages}
+    />
+  )
+}

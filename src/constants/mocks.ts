@@ -2,7 +2,7 @@ export const Unknown = {
   tag: "user",
   firstName: "firstname",
   lastName: "lastname",
-  email: "fakeemail?@gmail.com",
+  email: "email?@gmail.com",
 }
 
 export const Claudia = {

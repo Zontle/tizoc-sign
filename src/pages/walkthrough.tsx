@@ -23,7 +23,7 @@ const WalkthroughPage = () => {
 
   const DynamicStep = ({ isMd }: { isMd: Boolean } ) => {
     const RenderableStep = steps[currentStep]
-    return <RenderableStep isMd={isMd} nextStep={() => nextStep(currentStep)} />
+    return <RenderableStep isMd={isMd} nextStep={() => currentStep < STEPS - 1 ? nextStep(currentStep) : () => {}} />
   }
 
   const nextStep = (step: number) => { console.log('Next Step', step); return useCurrentStep(step + 1) }
