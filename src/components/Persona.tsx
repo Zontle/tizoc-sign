@@ -49,7 +49,7 @@ export const Persona = ({ persona, role, mb = 0, mt = 0, children, viewIcon, wal
                 <Text>{persona.firstName} &bull; {persona.lastName}</Text>
               </SkeletonText>
               {
-                role == PersonaRole.verified && 
+                role == PersonaRole.verified && !loading &&
                 (<>
                 <Text color="green.300" fontSize="xs">{persona.proof}</Text>
                 <Text color="green.300" fontSize="xs">{persona.proofMetadata}</Text>
