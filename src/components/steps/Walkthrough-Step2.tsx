@@ -69,7 +69,11 @@ const Stage3 = ({ isMd }: { isMd: Boolean }) => {
   return (
     <WalkthroughStageTemplate
       firstPersona={<Persona persona={Claudia} role={PersonaRole.verified} />}
-      secondPersona={<Persona persona={Tizoc} role={PersonaRole.service} >
+      secondPersona={<Persona persona={Tizoc} role={PersonaRole.service} viewIcon={
+        <Button rightIcon={<ViewIcon />} px="2" size="xs" variant="outline" colorScheme="yellow" ml="2">
+          Key
+        </Button>
+      }>
         <ButtonGroup variant="solid" size="xs" spacing="2" mt="2" colorScheme="yellow">
           <Button disabled rightIcon={<CheckIcon />}>
             Key Created
