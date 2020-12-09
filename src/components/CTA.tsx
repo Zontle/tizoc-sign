@@ -15,11 +15,11 @@ export const CTA = () => (
       flexGrow={3}
       mx={2}
       my={2}
-      href="/motivation"
-      as={`/motivation`}
+      href="/slide-deck"
+      as={`/slide-deck`}
     >
       <Button width="100%" variant="outline" colorScheme="yellow">
-        Motivation
+        Slide Deck
       </Button>
     </NextChakraLink>
     <NextChakraLink
@@ -41,7 +41,7 @@ export const CTA = () => (
       as={`/walkthrough`}
     >
       <Button width="100%" variant="solid" colorScheme="yellow">
-        View Walkthrough
+        Demo Walkthrough
       </Button>
     </NextChakraLink>
   </Container>

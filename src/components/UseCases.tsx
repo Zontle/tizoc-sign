@@ -1,33 +1,14 @@
-import { Section } from "./Section"
-import { SimpleGrid, Box } from "@chakra-ui/react"
+import { Section, SectionTemplate } from "./Section"
 import { Persona } from "./Persona"
 import { Claudia, Nathan, Tizoc, Alberto, Andy } from "../constants/mocks"
 import { PersonaRole } from "../commons/persona"
 import React from "react"
-import { ChevronRightIcon, ChevronDownIcon } from "@chakra-ui/icons"
-
-const SectionTemplate = ({ firstPersona, secondPersona, thirdPersona, isMd }: { firstPersona: React.ReactNode, secondPersona: React.ReactNode, thirdPersona: React.ReactNode, isMd: Boolean }) => {
-  return (<SimpleGrid columns={5} spacing={10} alignItems="center" display={{ md: "flex" }} justifyContent="center">
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        { firstPersona }
-      </Box>
-      { isMd ? <ChevronRightIcon m="auto" /> : <ChevronDownIcon my="5" display="block" mx="auto" /> }
-      <Box d="flex" alignContent="center" alignItems="center" justifyContent="center">
-        { secondPersona }
-      </Box>
-      { isMd ? <ChevronRightIcon m="auto" /> : <ChevronDownIcon my="5" display="block" mx="auto" /> }
-      <Box>
-        { thirdPersona }
-      </Box>
-    </SimpleGrid>
-  )
-}
 
 
 const Section1 = ({ isMd }: { isMd: Boolean }) => (
   <Section
     title="Fast verification of COVID-19 Tests"
-    badge="airports"
+    badge="Airports"
     subtitle="In some countries, airports have COVID-19 checkpoints to allow entry only to individuals that can produce 
     successful negative tests in the last 72 hours. Using Tizoc, these results can be onboarded via Santander's Digital Trust
     Protocol (DTP), to then be printed offline for quick verification, reducing queue times."
