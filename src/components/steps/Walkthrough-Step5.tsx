@@ -1,4 +1,4 @@
-import { Button, Skeleton } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { Persona } from "../Persona";
 import { Claudia, Javier } from "../../constants/mocks";
 import { PersonaRole } from "../../commons/persona";
@@ -8,6 +8,7 @@ import { WalkthroughStepTemplate, WalkthroughStageTemplate } from "../Walkthroug
 
 const Stage1 = ({ nextStage, isMd }: { nextStage: () => void, isMd: Boolean }) => {
   const loading = true;
+
   return (
     <WalkthroughStageTemplate
       firstPersona={<Persona persona={Claudia} role={PersonaRole.registered} light viewIcon={
@@ -24,7 +25,7 @@ const Stage1 = ({ nextStage, isMd }: { nextStage: () => void, isMd: Boolean }) =
           Verify proof
         </Button>
       </Persona>}
-      thirdPersona={<Persona persona={Claudia} role={PersonaRole.verified} light loading />}
+      thirdPersona={<Persona persona={Claudia} role={PersonaRole.verified} light loading={loading} />}
       isMd={isMd}
     />
   )
