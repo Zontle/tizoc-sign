@@ -19,7 +19,7 @@ const Stage1 = ({ nextStage, isMd }: { nextStage: () => void, isMd: Boolean }) =
     nonce: String
   };
 
-  const [params, setParams] = useUrlSearchParams(initial, types);
+  const [params] = useUrlSearchParams(initial, types);
 
   const loadAuthorizationUrl = async () => {
     return await fetch('/api/initiate-authorize').then(res => res.text())
