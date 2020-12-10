@@ -5,7 +5,8 @@ import { DarkModeSwitch } from '../components/common/DarkModeSwitch'
 import { Home } from '../components/common/Home'
 import * as Walkthrough from "../components/Walkthrough"
 import { Footer } from "../components/layout/Footer"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useUrlSearchParams } from "use-url-search-params"
 
 
 const WalkthroughPage = () => {
@@ -13,19 +14,43 @@ const WalkthroughPage = () => {
   const [currentStep, useCurrentStep] = useState(0)
 
   const steps = [
-    Walkthrough.Section1,
-    Walkthrough.Section2,
-    Walkthrough.Section3,
-    Walkthrough.Section4,
-    Walkthrough.Section5,
+    Walkthrough.Step1,
+    Walkthrough.Step2,
+    Walkthrough.Step3,
+    Walkthrough.Step4,
+    Walkthrough.Step5,
   ];
+
+  const initial = {
+    step: steps[0].name
+  };
+
+  const types = {
+    step: steps.map( step => step.name )
+  };
+
+  const [params, setParams] = useUrlSearchParams(initial, types);
+
+  useEffect(() => {
+    if (typeof params.step === 'string') {
+      const [, actualStep] = params.step.split('Step');
+      useCurrentStep(+actualStep - 1);
+    }
+  }, [params.step]);
+
+  const nextStepHandler = (step: number) => () => {
+    console.log(`Updating Step to ${step + 1}`)
+    useCurrentStep(step + 1)
+    setParams({ step: `Step${ step + 2 }` })
+    setParams({ stage: `Stage1` })
+  }
 
   const DynamicStep = ({ isMd }: { isMd: Boolean } ) => {
     const RenderableStep = steps[currentStep]
-    return <RenderableStep isMd={isMd} nextStep={() => currentStep < steps.length - 1 ? nextStep(currentStep) : () => {}} />
+    return <RenderableStep isMd={isMd} nextStep={
+      currentStep < steps.length - 1 ? nextStepHandler(currentStep) : () => {}
+    } />
   }
-
-  const nextStep = (step: number) => { return useCurrentStep(step + 1) }
 
   return (
     <Container minHeight="100vh">
@@ -39,7 +64,7 @@ const WalkthroughPage = () => {
               (<Button 
                 key={step}
                 variant={currentStep === step ? "solid" : "outline"}
-                onClick={() => useCurrentStep(step)}
+                onClick={nextStepHandler(step - 1)}
                 >
                   Step {step + 1}
                 </Button>)

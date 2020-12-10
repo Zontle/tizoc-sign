@@ -34,7 +34,8 @@
     "framer-motion": "^2.9.4",
     "next": "10.0.3",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "use-url-search-params": "^2.3.13"
   },
   "devDependencies": {
     "@types/node": "^14.6.0",

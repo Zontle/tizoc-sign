@@ -1,5 +1,5 @@
 import { Section } from "./Section"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { WalkthroughStepOne } from "./steps/Walkthrough-Step1"
 import { WalkthroughStepTwo } from "./steps/Walkthrough-Step2"
 import { WalkthroughStepThree } from "./steps/Walkthrough-Step3"
@@ -7,6 +7,7 @@ import { WalkthroughStepFour } from "./steps/Walkthrough-Step4"
 import { WalkthroughStepFive } from "./steps/Walkthrough-Step5"
 import { SimpleGrid, Box, Container, Button } from "@chakra-ui/react"
 import { ChevronRightIcon, ChevronDownIcon } from "@chakra-ui/icons"
+import { useUrlSearchParams } from "use-url-search-params"
 
 
 export const WalkthroughStageTemplate = ({ firstPersona, secondPersona, thirdPersona, isMd }: { firstPersona: React.ReactNode, secondPersona: React.ReactNode, thirdPersona: React.ReactNode, isMd: Boolean }) => {
@@ -35,12 +36,35 @@ interface WalkthroughStageProps {
 export const WalkthroughStepTemplate = ({ isMd, nextStep, stages }: { isMd: Boolean, nextStep: () => void, stages: React.FC<WalkthroughStageProps>[]  }) => {
   const [currentStage, useStage] = useState(0)
 
+  const initial = {
+    stage: stages[0].name
+  };
+
+  const types = {
+    stage: stages.map( stage => stage.name )
+  };
+
+  const [params, setParams] = useUrlSearchParams(initial, types);
+
+  useEffect(() => {
+    if (typeof params.stage === 'string') {
+      const [, actualStage] = params.stage.split('Stage');
+      useStage(+actualStage - 1);
+    }
+  }, [params.stage]);
+
+  const nextStageHandler = (stage: number) => () => {
+    console.log(`Updating stage to ${stage + 1}`)
+    useStage(stage+1);
+    setParams({ stage: `Stage${ stage + 2 }` })
+  }
+
   const DynamicStage = ({ isMd }: { isMd: Boolean }) => {
     const RenderableStage = stages[currentStage]
     return <RenderableStage 
       isMd={isMd}
       nextStage={
-        currentStage < stages.length - 1 ? () => useStage(currentStage+1) : () => {}
+        currentStage < stages.length - 1 ? nextStageHandler(currentStage): () => {}
       }
     />
   }
@@ -59,7 +83,7 @@ export const WalkthroughStepTemplate = ({ isMd, nextStep, stages }: { isMd: Bool
   )
 }
 
-const Section1 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => (
+const Step1 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => (
   <Section
     title="1. Obtain verified data using Santander's Digital Trust Protocol"
     subtitle="Protect your users data privacy by leveraging on the Open ID provider DTP (Digital Trust Protocol),
@@ -69,7 +93,7 @@ const Section1 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) =
   </Section>
 )
 
-const Section2 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => (
+const Step2 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => (
   <Section
     title="2. Generate a digital certificate for offline verification"
     subtitle="Based on the data verification, your users can request an offline certification which can be used by 
@@ -79,7 +103,7 @@ const Section2 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) =
   </Section>
 )
 
-const Section3 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => (
+const Step3 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => (
   <Section
     title="3. Pay for offline attested certificate"
     subtitle="Each user is given their own regulated custodial-based Ethereum wallets based on cloud HSM-keys, so they can pay for 
@@ -89,7 +113,7 @@ const Section3 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) =
   </Section>
 )
 
-const Section4 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => (
+const Step4 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => (
   <Section
     title="4. Sign the certificate on the Blockchain"
     subtitle="After payment, the digital certificate can then be signed by Tizoc‘s HSM-based cloud key, creating a proof on the Ethereum blockchain, 
@@ -100,7 +124,7 @@ const Section4 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) =
   </Section>
 )
 
-const Section5 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => (
+const Step5 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => (
   <Section
     title="5. Verify offline your users by using the pre-downloaded certificate"
     subtitle="Your company can verify users by requesting the previously generated digital proof obtained by Tizoc. Your company
@@ -110,4 +134,4 @@ const Section5 = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) =
   </Section>
 )
 
-export { Section1, Section2, Section3, Section4, Section5 }
+export { Step1, Step2, Step3, Step4, Step5 }
