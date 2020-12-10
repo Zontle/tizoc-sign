@@ -1,10 +1,28 @@
 {
-  "name": "with-chakra-ui-typescript",
-  "version": "1.0.0",
+  "name": "tizoc",
+  "version": "0.0.1",
+  "tizoc": {
+    "redirection_uri": "https://3000-a5d458a7-439a-44fc-a31d-5555993092db.ws-eu03.gitpod.io/walkthrough"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "util:gen:key:private": "openssl genrsa -out private.pem 2048",
+    "util:gen:key:public": "openssl rsa -in private.pem -outform PEM -pubout -out publickey.pem",
+    "util:gen:jwt:public": "pem-jwk publickey.pem > public-jwk.json",
+    "util:gen:jwt:private": "pem-jwk private.pem > private-jwk.json",
+    "util:gen:clean": "rimraf *.pem *-jwk.json",
+    "util:gen": "yarn util:gen:clean && yarn util:gen:key:private && yarn util:gen:key:public && yarn util:gen:jwt:public && yarn util:gen:jwt:private",
+    "util:env:redirection_uri": "echo REDIRECT_URI=$(node -p -e \"require('./package.json').tizoc.redirection_uri\") >> .env.local",
+    "util:env:name": "echo APP_NAME=$(node -p -e \"require('./package.json').name\")-$(node -p -e \"require('./package.json').version\") >> .env.local",
+    "util:env:kid": "echo APP_KID=$(uuid) >> .env.local",
+    "util:env:jwt": "echo PRIVATE_JWT=$(cat private-jwk.json | base64 -w 0) >> .env",
+    "util:env:clean": "rimraf .env.local",
+    "util:env": "yarn util:env:clean && yarn util:env:redirection_uri && yarn util:env:name && yarn util:env:kid",
+    "util:reg:request": "yarn util:gen && yarn util:env && node registration.js > registration-request.json",
+    "util:reg:response": "curl -X POST https://live.iamid.io/reg -H 'Accept: */*' -H 'Content-Type: application/json' -d @./registration-request.json > registration-response.json",
+    "util:reg": "yarn util:reg:request && yarn util:reg:response"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.0",
@@ -12,6 +30,7 @@
     "@chakra-ui/theme-tools": "1.0.0",
     "@emotion/react": "11.1.1",
     "@emotion/styled": "11.0.0",
+    "dotenv": "^8.2.0",
     "framer-motion": "^2.9.4",
     "next": "10.0.3",
     "react": "^17.0.1",
@@ -21,7 +40,10 @@
     "@types/node": "^14.6.0",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
-    "typescript": "4.0.5"
+    "pem-jwk": "^2.0.0",
+    "rimraf": "^3.0.2",
+    "typescript": "4.0.5",
+    "uuid": "^8.3.2"
   },
   "license": "MIT"
 }
