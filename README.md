@@ -24,5 +24,5 @@ All proofs are encrypted and stored in the `IPFS network`.
 1. Run `cp .env.example .env`
 2. Update `REDIRECT_URI` inside `.env` to match its value in `package.json`
 3. Update `CLIENT_ID` inside `.env` to match its value from `registration-response.json`
-4. Update `NPM_CONFIG_TOKEN` inside `.env` with a GitHub personal token with `packages` scope.
-5. Add the private jwt key to your `.env` by running `yarn util:env:jwt`. Make sure you have a `\n` before running it.
+4. Update `private-jwk.json`‘s `use` with `key` and `kid` with the application `kid`.
+4. Add the private jwt key to your `.env` by running `yarn util:env:jwt`. Make sure you have a `\n` before running it.
