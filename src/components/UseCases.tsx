@@ -7,11 +7,11 @@ import React from "react"
 
 const Section1 = ({ isMd }: { isMd: Boolean }) => (
   <Section
-    title="Fast verification of COVID-19 Tests"
+    title="Trustable COVID-19 vaccination certificates"
     badge="Airports"
-    subtitle="In some countries, airports have COVID-19 checkpoints to allow entry only to individuals that can produce 
-    successful negative tests in the last 72 hours. Using Tizoc, these results can be onboarded via Santander's Digital Trust
-    Protocol (DTP), to then be printed offline for quick verification, reducing queue times."
+    subtitle="As soon as the COVID-19 vaccine starts to roll out, airports will need to rely on COVID-19 checkpoints to allow entry only 
+    to individuals that can produce trusted vaccine certificates offline. Using Tizoc, these certificates can be generated via Santander's 
+    Digital Trust Protocol (DTP), to then be printed offline for quick and accurate verification."
   >
     <SectionTemplate 
       firstPersona={<Persona persona={Claudia} role={PersonaRole.registered} />}
