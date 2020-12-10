@@ -78,7 +78,7 @@ const Stage3 = ({ isMd }: { isMd: Boolean }) => {
           <Button disabled rightIcon={<CheckIcon />}>
             Key Created
             </Button>
-          <Button rightIcon={<SmallAddIcon />}>
+          <Button disabled rightIcon={<CheckIcon />}>
             PDF Generated
             </Button>
         </ButtonGroup>

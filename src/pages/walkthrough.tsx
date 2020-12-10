@@ -10,16 +10,6 @@ import { useUrlSearchParams } from "use-url-search-params"
 
 
 const WalkthroughPage = () => {
-  const [isMd] = useMediaQuery("(min-width: 52em)")
-  const [currentStep, useCurrentStep] = useState(0)
-
-  useEffect(() => {
-    if (typeof params.step === 'string') {
-      const [, actualStep] = params.step.split('Step');
-      useCurrentStep(+actualStep - 1);
-    }
-  }, []);
-
   const steps = [
     { component: Walkthrough.Step1, name: 'Step1' },
     { component: Walkthrough.Step2, name: 'Step2' },
@@ -36,7 +26,17 @@ const WalkthroughPage = () => {
     step: steps.map( step => step.name )
   };
 
+  const [isMd] = useMediaQuery("(min-width: 52em)")
+  const [currentStep, useCurrentStep] = useState(0)
   const [params, setParams] = useUrlSearchParams(initial, types);
+
+  useEffect(() => {
+    console.log('Use Effect Step', params.step)
+    if (typeof params.step === 'string') {
+      const [, actualStep] = params.step.split('Step');
+      useCurrentStep(+actualStep - 1);
+    }
+  }, [params.step]);  
 
   const nextStepHandler = (step: number) => () => {
     useCurrentStep(step + 1)

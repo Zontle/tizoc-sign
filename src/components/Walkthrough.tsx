@@ -34,15 +34,6 @@ interface WalkthroughStageProps {
 }
 
 export const WalkthroughStepTemplate = ({ isMd, nextStep, stages }: { isMd: Boolean, nextStep: () => void, stages: { component: React.FC<WalkthroughStageProps>, name: string}[]  }) => {
-  const [currentStage, useStage] = useState(0)
-
-  useEffect(() => {
-    if (typeof params.stage === 'string') {
-      const [, actualStage] = params.stage.split('Stage');
-      useStage(+actualStage - 1);
-    }
-  }, []);
-
   const initial = {
     stage: stages[0].name
   };
@@ -51,11 +42,24 @@ export const WalkthroughStepTemplate = ({ isMd, nextStep, stages }: { isMd: Bool
     stage: stages.map( stage => stage.name )
   };
 
+  const [currentStage, useStage] = useState(0)
   const [params, setParams] = useUrlSearchParams(initial, types);
+
+  useEffect(() => {
+      console.log('Use Effect Stage', params.stage)
+    if (typeof params.stage === 'string') {
+      const [, actualStage] = params.stage.split('Stage');
+      useStage(+actualStage - 1);
+    }
+  }, [params.stage]);
 
   const nextStageHandler = (stage: number) => () => {
     useStage(stage+1);
     setParams({ stage: `Stage${ stage + 2 }` })
+  }
+
+  const restartDemo = () => {
+    setParams({ stage: 'Stage1', step: 'Step1' })
   }
 
   const DynamicStage = ({ isMd }: { isMd: Boolean }) => {
@@ -75,7 +79,9 @@ export const WalkthroughStepTemplate = ({ isMd, nextStep, stages }: { isMd: Bool
       currentStage == stages.length - 1 &&
       <Box position="absolute" bottom="-50px" mt="10" left="0" right="0" textAlign="center">
         <Button onClick={() => { useStage(0); setParams({ stage: `Stage1` }); }}>Reset</Button>
-        <Button ml="2" variant="solid" colorScheme="yellow" onClick={nextStep}>Next</Button>
+        {
+          params.step !== 'Step5' && <Button ml="2" variant="solid" colorScheme="yellow" onClick={nextStep}>Next</Button>
+        }
       </Box>
     }
   </Container>
