@@ -33,8 +33,15 @@ interface WalkthroughStageProps {
    nextStage: () => void
 }
 
-export const WalkthroughStepTemplate = ({ isMd, nextStep, stages }: { isMd: Boolean, nextStep: () => void, stages: React.FC<WalkthroughStageProps>[]  }) => {
+export const WalkthroughStepTemplate = ({ isMd, nextStep, stages }: { isMd: Boolean, nextStep: () => void, stages: { component: React.FC<WalkthroughStageProps>, name: string}[]  }) => {
   const [currentStage, useStage] = useState(0)
+
+  useEffect(() => {
+    if (typeof params.stage === 'string') {
+      const [, actualStage] = params.stage.split('Stage');
+      useStage(+actualStage - 1);
+    }
+  }, []);
 
   const initial = {
     stage: stages[0].name
@@ -46,21 +53,13 @@ export const WalkthroughStepTemplate = ({ isMd, nextStep, stages }: { isMd: Bool
 
   const [params, setParams] = useUrlSearchParams(initial, types);
 
-  useEffect(() => {
-    if (typeof params.stage === 'string') {
-      const [, actualStage] = params.stage.split('Stage');
-      useStage(+actualStage - 1);
-    }
-  }, [params.stage]);
-
   const nextStageHandler = (stage: number) => () => {
-    console.log(`Updating stage to ${stage + 1}`)
     useStage(stage+1);
     setParams({ stage: `Stage${ stage + 2 }` })
   }
 
   const DynamicStage = ({ isMd }: { isMd: Boolean }) => {
-    const RenderableStage = stages[currentStage]
+    const RenderableStage = stages[currentStage].component
     return <RenderableStage 
       isMd={isMd}
       nextStage={

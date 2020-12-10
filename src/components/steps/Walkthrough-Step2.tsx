@@ -95,9 +95,9 @@ const Stage3 = ({ isMd }: { isMd: Boolean }) => {
 
 export const WalkthroughStepTwo = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => {
   const stages = [
-    Stage1,
-    Stage2,
-    Stage3
+    { component: Stage1, name: 'Stage1' },
+    { component: Stage2, name: 'Stage2' },
+    { component: Stage3, name: 'Stage3' },
   ];
 
   return (

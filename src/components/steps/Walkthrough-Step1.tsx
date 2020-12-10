@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Code, Text, Box } from "@chakra-ui/react";
 import { useRouter } from 'next/router'
 import { Persona } from "../Persona";
 import { Claudia, Tizoc, Unknown } from "../../constants/mocks";
@@ -53,6 +53,11 @@ const Stage1 = ({ nextStage, isMd }: { nextStage: () => void, isMd: Boolean }) =
         <Button width="100%" onClick={next} px="2" size="xs" variant="solid" colorScheme="yellow" mt="2">
           Verify
           </Button>
+          <Box mt="2">
+            <Text margin="auto" textAlign="center">
+                User: <Code>mark</Code>, Pass: <Code>123</Code>
+            </Text>
+          </Box>
       </Persona>}
       thirdPersona={<Persona persona={Unknown} role={PersonaRole.unknown} loading={true} />}
       isMd={isMd}
@@ -77,8 +82,8 @@ const Stage2 = ({ isMd }: { isMd: Boolean }) => {
 
 export const WalkthroughStepOne = ({ isMd, nextStep }: { isMd: Boolean, nextStep: () => void }) => {
   const stages = [
-    Stage1,
-    Stage2,
+    { component: Stage1, name: 'Stage1' },
+    { component: Stage2, name: 'Stage2' },
   ];
 
   return (

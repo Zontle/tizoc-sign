@@ -13,12 +13,19 @@ const WalkthroughPage = () => {
   const [isMd] = useMediaQuery("(min-width: 52em)")
   const [currentStep, useCurrentStep] = useState(0)
 
+  useEffect(() => {
+    if (typeof params.step === 'string') {
+      const [, actualStep] = params.step.split('Step');
+      useCurrentStep(+actualStep - 1);
+    }
+  }, []);
+
   const steps = [
-    Walkthrough.Step1,
-    Walkthrough.Step2,
-    Walkthrough.Step3,
-    Walkthrough.Step4,
-    Walkthrough.Step5,
+    { component: Walkthrough.Step1, name: 'Step1' },
+    { component: Walkthrough.Step2, name: 'Step2' },
+    { component: Walkthrough.Step3, name: 'Step3' },
+    { component: Walkthrough.Step4, name: 'Step4' },
+    { component: Walkthrough.Step5, name: 'Step5' }
   ];
 
   const initial = {
@@ -31,22 +38,13 @@ const WalkthroughPage = () => {
 
   const [params, setParams] = useUrlSearchParams(initial, types);
 
-  useEffect(() => {
-    if (typeof params.step === 'string') {
-      const [, actualStep] = params.step.split('Step');
-      useCurrentStep(+actualStep - 1);
-    }
-  }, [params.step]);
-
   const nextStepHandler = (step: number) => () => {
-    console.log(`Updating Step to ${step + 1}`)
     useCurrentStep(step + 1)
-    setParams({ step: `Step${ step + 2 }` })
-    setParams({ stage: `Stage1` })
+    setParams({ step: `Step${ step + 2 }`, stage: `Stage1` })
   }
 
   const DynamicStep = ({ isMd }: { isMd: Boolean } ) => {
-    const RenderableStep = steps[currentStep]
+    const RenderableStep = steps[currentStep].component
     return <RenderableStep isMd={isMd} nextStep={
       currentStep < steps.length - 1 ? nextStepHandler(currentStep) : () => {}
     } />
