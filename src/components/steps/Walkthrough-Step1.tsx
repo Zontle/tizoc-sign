@@ -5,20 +5,49 @@ import { Claudia, Tizoc, Unknown } from "../../constants/mocks";
 import { PersonaRole } from "../../commons/persona";
 import { CheckIcon } from "@chakra-ui/icons";
 import { WalkthroughStageTemplate, WalkthroughStepTemplate } from "../Walkthrough";
+import { useUrlSearchParams } from "use-url-search-params";
+import { useEffect, useState } from "react";
 
 
 const Stage1 = ({ nextStage, isMd }: { nextStage: () => void, isMd: Boolean }) => {
   const router = useRouter()
   
+  const initial = {
+    code: ''
+  };
+
+  const types = {
+    code: String
+  };
+
+  const [params] = useUrlSearchParams(initial, types);
+  const [token, setToken] = useState()
+
   const loadAuthorizationUrl = async () => {
     return await fetch('/api/initiate-authorize').then(res => res.text())
   }
 
   const next = async () => {
-    //const url = await loadAuthorizationUrl()
-    //router.push(url)
-    nextStage()
+    const url = await loadAuthorizationUrl()
+    router.push(url)
   }
+
+  useEffect(() => {
+    (async () => {
+      if (typeof params.code === 'string' && !token) {
+        const { code } = params;
+        const token = await fetch('/api/token', { 
+          method: "POST", 
+          body: JSON.stringify({ code }), 
+          headers: { 
+            "Content-type": "application/json; charset=UTF-8"
+          }}).then(res => res.json())
+        setToken(token);
+        console.log("Token", token)
+        nextStage()
+      }
+    })()
+  }, [params.code]);
 
   return (
     <WalkthroughStageTemplate

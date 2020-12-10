@@ -75,7 +75,7 @@ export const WalkthroughStepTemplate = ({ isMd, nextStep, stages }: { isMd: Bool
     { 
       currentStage == stages.length - 1 &&
       <Box position="absolute" bottom="-50px" mt="10" left="0" right="0" textAlign="center">
-        <Button onClick={() => useStage(0)}>Reset</Button>
+        <Button onClick={() => { useStage(0); setParams({ stage: `Stage1` }); }}>Reset</Button>
         <Button ml="2" variant="solid" colorScheme="yellow" onClick={nextStep}>Next</Button>
       </Box>
     }
