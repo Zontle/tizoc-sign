@@ -2,17 +2,24 @@ export const Unknown = {
   tag: "user",
   firstName: "firstname",
   lastName: "lastname",
-  email: "email?@gmail.com",
+  email: "mark.west@gmail.com",
 }
+
+const vaccinatedDateTimeDiff = 
+    Math.abs(new Date(Date.now()).getTime() - new Date("10/25/2020").getTime())
+
+const vaccinatedDateDaysDiff = 
+    Math.ceil(vaccinatedDateTimeDiff / (1000 * 3600 * 24));
 
 export const Claudia = {
   tag: "user",
-  firstName: "Claudia",
-  lastName: "Ibarra",
-  proof: "Covid Test Negative",
-  proofMetadata: "56hrs 34m 17s left",
-  avatarSrc: "https://randomuser.me/api/portraits/women/4.jpg",
-  email: "clau.ibarra_md@gmail.com",
+  firstName: "Mark",
+  lastName: "West",
+  date: "25/10/2020",
+  proof: "Covid Vaccinated",
+  proofMetadata: `Since ${vaccinatedDateDaysDiff} days`,
+  avatarSrc: "https://randomuser.me/api/portraits/men/33.jpg",
+  email: "mark.west@gmail.com",
 }
 
 export const Nathan = {

@@ -12,9 +12,7 @@ import { useEffect, useState } from "react";
 const Stage1 = ({ nextStage, isMd }: { nextStage: () => void, isMd: Boolean }) => {
   const router = useRouter()
   
-  const initial = {
-    code: ''
-  };
+  const initial = {};
 
   const types = {
     code: String
