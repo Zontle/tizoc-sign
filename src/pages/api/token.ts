@@ -12,6 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (!req.body.code) {
       res.status(400).json({ error: 'No code has been sent' });
+      return;
     }
 
     const verifyidclient = await VerifiedIdClient.createInstance({
@@ -29,13 +30,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         .withCode(req.body.code)
         .build();
 
-      const token = await verifyidclient.token(request);
+      const token = await verifyidclient.token(request)
+        .catch((e: string | undefined) => { throw new Error(e) })
 
       res.status(200).json(token);
 
     } catch (e) {
       console.log(e);
       res.status(500).json({ error: e, error_description: 'Unable to initiate token request' });
+      return;
     }
 
   } catch (e) {
