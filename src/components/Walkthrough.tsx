@@ -58,10 +58,6 @@ export const WalkthroughStepTemplate = ({ isMd, nextStep, stages }: { isMd: Bool
     setParams({ stage: `Stage${ stage + 2 }` })
   }
 
-  const restartDemo = () => {
-    setParams({ stage: 'Stage1', step: 'Step1' })
-  }
-
   const DynamicStage = ({ isMd }: { isMd: Boolean }) => {
     const RenderableStage = stages[currentStage].component
     return <RenderableStage 
