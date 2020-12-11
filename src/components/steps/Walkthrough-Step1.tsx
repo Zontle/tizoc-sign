@@ -6,11 +6,12 @@ import { PersonaRole } from "../../commons/persona";
 import { CheckIcon } from "@chakra-ui/icons";
 import { WalkthroughStageTemplate, WalkthroughStepTemplate } from "../Walkthrough";
 import { useUrlSearchParams } from "use-url-search-params";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 const Stage1 = ({ nextStage, isMd }: { nextStage: () => void, isMd: Boolean }) => {
   const router = useRouter()
+  const [isLoading, setLoading] = useState(false)
   
   const initial = {};
 
@@ -26,6 +27,7 @@ const Stage1 = ({ nextStage, isMd }: { nextStage: () => void, isMd: Boolean }) =
   }
 
   const next = async () => {
+    setLoading(true);
     const url = await loadAuthorizationUrl()
     router.push(url)
   }
@@ -50,7 +52,7 @@ const Stage1 = ({ nextStage, isMd }: { nextStage: () => void, isMd: Boolean }) =
     <WalkthroughStageTemplate
       firstPersona={<Persona persona={Claudia} role={PersonaRole.registered} />}
       secondPersona={<Persona persona={Tizoc} role={PersonaRole.service}>
-        <Button width="100%" onClick={next} px="2" size="xs" variant="solid" colorScheme="yellow" mt="2">
+        <Button isLoading={isLoading} width="100%" onClick={next} px="2" size="xs" variant="solid" colorScheme="yellow" mt="2">
           Verify
           </Button>
           <Box mt="2">
